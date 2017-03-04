@@ -216,4 +216,4 @@ Eg.
 
 ## License
 MIT License [read] (https://github.com/lisong/code-push-server/blob/master/LICENSE)
-This is a clone of [lisong code push repo] https://github.com/lisong/code-push-server
+This is a clone of [lisong code push repo] (https://github.com/lisong/code-push-server)
