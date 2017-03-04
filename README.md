@@ -22,9 +22,9 @@ CodePush Server is a CodePush progam server! Microsoft CodePush cloud is slow, w
 
 ### shell command line
 
-`` `Shell
+```sShell
 $ Code-push login http://codepush.19910225.com:8080 # Login
-`` ``
+```
 
 ### [web] (http://codepush-managerment.19910225.com:8080)
 
@@ -38,29 +38,29 @@ Visit: http://codepush-managerment.19910225.com: 8080
 
 ## INSTALL FROM NPM PACKAGE
 
-`` `Shell
+```shell
 $ Npm install code-push-server -g
 $ Code-push-server-db init --dbhost localhost --dbuser root --dbpassword # initialize the mysql database
 $ Code-push-server # Start the service browser to open http://127.0.0.1:3000
-`` ``
+```
 
 ## INSTALL FROM SOURCE CODE
 
-`` `Shell
+```shell
 $ Git clone https://github.com/lisong/code-push-server.git
 $ Cd code-push-server
 $ Npm install
 $ ./bin/db init --dbhost localhost --dbuser root --dbpassword # Initialize the mysql database
 $ ./bin/www # Start the service in the browser to open http://127.0.0.1:3000
-`` ``
+```
 
 ## CONFIG
-`` `Shell
+```shell
 $ Vim config / config.js
-`` ``
+```
 Please check if the following configuration is consistent with your environment, especially the downloadUrl parameter
 
-`` ``
+```
   Db: {
     Username: "root",
     Password: null,
@@ -88,7 +88,7 @@ Please check if the following configuration is consistent with your environment,
     // select the storage type, currently supports local and qiniu configuration
     StorageType: "local"
   },
-`` ``
+```
 Read [config.js] (https://github.com/lisong/code-push-server/blob/master/config/config.js)
 
 
@@ -99,57 +99,57 @@ Read [config.js] (https://github.com/lisong/code-push-server/blob/master/config/
 
 ## RUN
 
-`` `Shell
+```shell
 $ Node ./bin/www # or code-push-server
-`` ``
+```
 
 Or point config file and ENV
 
-`` `Shell
+```shell
 $ CONFIG_FILE = / path / to / config.js NODE_ENV = production node ./bin/www # or CONFIG_FILE = / path / to / config.js NODE_ENV = production code-push-server
-`` ``
+```
 
 You have to change `loginSecret` in config.js for security.
 
 ## Default listen Host / Port 0.0.0.0/3000
 You can change like this
 
-`` `Shell
+```shell
 $ PORT = 3000 HOST = 127.0.0.1 NODE_ENV = production node ./bin/www # or PORT = 3000 HOST = 127.0.0.1 NODE_ENV = production code-push-server
-`` ``
+```
 
 ## [code-push-cli] (https://github.com/Microsoft/code-push)
 Use code-push-cli manager CodePushServer
 
-`` `Shell
-$ Npm install code-push-cli @ latest -g
+```shell
+$ npm install code-push-cli @ latest -g
 $ Code-push login http://127.0.0.1:3000 #login in browser account: admin password: 123456
-`` ``
+```
 
 ## [react-native-code-push] (https://github.com/Microsoft/react-native-code-push) for react-native
 
-`` `Shell
+```shell
 $ Cd / path / to / project
 $ Npm install react-native-code-push @ latest
-`` ``
+```
 
 ## config react-native project
 Follow the react-native-code-push docs, addition iOS add a new entry named CodePushServerURL, whose value is the key of ourself CodePushServer URL. Andriod use the new CodePush constructor in MainApplication point CodePushServerUrl
 
 IOS eg. In file Info.plist
 
-`` `Xml
+```xml
 ...
 <Key> CodePushDeploymentKey </ key>
 <String> YourCodePushKey </ string>
 <Key> CodePushServerURL </ key>
 <String> YourCodePushServerUrl </ string>
 ...
-`` ``
+```
 
 Android eg. In file MainApplication.java
 
-`` `Java
+```java
 @Override
 Protected List <ReactPackage> getPackages () {
   Return Arrays. <ReactPackage> asList (
@@ -162,12 +162,12 @@ Protected List <ReactPackage> getPackages () {
       )
   );
 }
-`` ``
+```
 
 
 ## [cordova-plugin-code-push] (https://github.com/Microsoft/cordova-plugin-code-push) for cordova
 
-`` `Shell
+```shell
 $ Cd / path / to / project
 $ Cordova plugin add cordova-plugin-code-push @ latest --save
 `` ``
@@ -176,7 +176,7 @@ $ Cordova plugin add cordova-plugin-code-push @ latest --save
 
 Edit config.xml. Add code below
 
-`` `Xml
+```xml
 <Platform name = "android">
     <Preference name = "CodePushDeploymentKey" value = "nVHPr6asLSusnWoLBNCSktk9FWbiqLF160UDg" />
     <Preference name = "CodePushServerUrl" value = "http://codepush.19910225.com:8080/" />
@@ -190,14 +190,14 @@ Edit config.xml. Add code below
 ## Production Manage
 Use [pm2] (http://pm2.keymetrics.io/) to manage process.
 
-`` `Shell
-$ Npm install pm2 -g
-$ Cp config / config.js /path/to/production/config.js
-$ Vim /path/to/production/config.js #configure your env.
-$ Cp docs / process.yml /path/to/production/process.yml
-$ Vim /path/to/production/process.yml #configure your env.
-$ Pm2 start /path/to/production/process.yml
-`` ``
+```shell
+$ npm install pm2 -g
+$ p config / config.js /path/to/production/config.js
+$ vim /path/to/production/config.js #configure your env.
+$ cp docs / process.yml /path/to/production/process.yml
+$ vim /path/to/production/process.yml #configure your env.
+$ pm2 start /path/to/production/process.yml
+```
 
 ## Use [CodePush Web] (https://github.com/lisong/code-push-web) manage apps
 
@@ -205,14 +205,14 @@ Add codePushWebUrl config in ./config/config.js
 
 Eg.
 
-`` `Json
+```json
 ...
 "Common": {
   "LoginSecret": "CodePushServer",
   "CodePushWebUrl": "Your CodePush Web address",
 }
 ...
-`` ``
+```
 
 ## License
 MIT License [read] (https://github.com/lisong/code-push-server/blob/master/LICENSE)
