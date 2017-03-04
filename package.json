@@ -1,0 +1,162 @@
+{
+  "_args": [
+    [
+      "code-push-server",
+      ""
+    ]
+  ],
+  "_from": "code-push-server@latest",
+  "_id": "code-push-server@0.2.9",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/code-push-server",
+  "_nodeVersion": "5.5.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/code-push-server-0.2.9.tgz_1477917986998_0.669515335932374"
+  },
+  "_npmUser": {
+    "email": "lisong2010@gmail.com",
+    "name": "songlee"
+  },
+  "_npmVersion": "3.10.9",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "code-push-server",
+    "raw": "code-push-server",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/code-push-server/-/code-push-server-0.2.9.tgz",
+  "_shasum": "0844d7a5a51e3d3cf5fd548e50cc0a4b4d67509d",
+  "_shrinkwrap": null,
+  "_spec": "code-push-server",
+  "_where": "",
+  "author": {
+    "email": "lisong2010@gmail.com",
+    "name": "Tab Lee",
+    "url": "https://github.com/lisong/"
+  },
+  "bin": {
+    "code-push-server": "./bin/www",
+    "code-push-server-db": "./bin/db"
+  },
+  "bugs": {
+    "url": "https://github.com/lisong/code-push-server/issues"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "bluebird": "^3.4.1",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "debug": "~2.2.0",
+    "express": "^4.14.0",
+    "formidable": "^1.0.17",
+    "fs-extra": "^0.30.0",
+    "helmet": "^2.1.0",
+    "jsonwebtoken": "^7.1.7",
+    "lodash": "^4.5.1",
+    "markdown-it": "^8.0.1",
+    "moment": "^2.14.1",
+    "morgan": "~1.6.1",
+    "mysql": "^2.10.2",
+    "node-unzip-2": "^0.2.1",
+    "nodemailer": "^2.5.0",
+    "pug": "^2.0.0-beta6",
+    "qiniu": "^6.1.10",
+    "rand-token": "^0.2.1",
+    "recursive-fs": "^0.1.4",
+    "redis": "^2.6.2",
+    "request": "^2.72.0",
+    "sequelize": "^3.24.5",
+    "serve-favicon": "~2.3.0",
+    "slash": "^1.0.0",
+    "validator": "^6.1.0",
+    "yargs": "^6.2.0",
+    "yazl": "^2.3.0"
+  },
+  "description": "CodePush service is hotupdate services which adapter react-native-code-push and cordova-plugin-code-push",
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "mocha": "^3.0.2",
+    "should": "^11.1.0",
+    "supertest": "^2.0.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "0844d7a5a51e3d3cf5fd548e50cc0a4b4d67509d",
+    "tarball": "https://registry.npmjs.org/code-push-server/-/code-push-server-0.2.9.tgz"
+  },
+  "engines": {
+    "node": ">= 5.0",
+    "npm": ">= 3.10.8"
+  },
+  "files": [
+    "bin",
+    "config",
+    "core",
+    "docs",
+    "models",
+    "public",
+    "routes",
+    "sql",
+    "views",
+    "app.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "gitHead": "67a3b21f4bc5511f746cb19b35a2ec2d1964ca15",
+  "homepage": "https://github.com/lisong/code-push-server#readme",
+  "keywords": [
+    "code-push",
+    "react-native",
+    "cordova",
+    "services",
+    "code",
+    "push"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "email": "lisong2010@gmail.com",
+      "name": "songlee"
+    }
+  ],
+  "name": "code-push-server",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lisong/code-push-server.git"
+  },
+  "scripts": {
+    "coverage": "make coverage",
+    "start": "node ./bin/www",
+    "test": "make test",
+    "test-win": "mocha test/api/init test/api/users test/api/auth test/api/account test/api/accessKeys test/api/sessions test/api/apps test/api/index --recursive --timeout 15000"
+  },
+  "version": "0.2.9",
+  "warnings": [
+    {
+      "code": "ENOTSUP",
+      "pkgid": "code-push-server@0.2.9",
+      "required": {
+        "node": ">= 5.0",
+        "npm": ">= 3.10.8"
+      }
+    },
+    {
+      "code": "ENOTSUP",
+      "pkgid": "code-push-server@0.2.9",
+      "required": {
+        "node": ">= 5.0",
+        "npm": ">= 3.10.8"
+      }
+    }
+  ]
+}
