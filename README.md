@@ -1,220 +1,219 @@
-# CodePush Server [source](https://github.com/lisong/code-push-server) 
+# CodePush Server [source] (https://github.com/lisong/code-push-server)
 
-[![NPM Version](https://img.shields.io/npm/v/code-push-server.svg)](https://npmjs.org/package/code-push-server)
-[![Node.js Version](https://img.shields.io/node/v/code-push-server.svg)](https://nodejs.org/en/download/)
-[![Linux Status](https://img.shields.io/travis/lisong/code-push-server/master.svg?label=linux)](https://travis-ci.org/lisong/code-push-server)
-[![Windows Status](https://img.shields.io/appveyor/ci/lisong/code-push-server/master.svg?label=windows)](https://ci.appveyor.com/project/lisong/code-push-server)
-[![Coverage Status](https://img.shields.io/coveralls/lisong/code-push-server/master.svg)](https://coveralls.io/github/lisong/code-push-server)
-[![Dependency Status](https://img.shields.io/david/lisong/code-push-server.svg)](https://david-dm.org/lisong/code-push-server)
-[![Known Vulnerabilities](https://snyk.io/test/npm/code-push-server/badge.svg)](https://snyk.io/test/npm/code-push-server)
-[![Licenses](https://img.shields.io/npm/l/code-push-server.svg)](https://spdx.org/licenses/MIT)
+[! [NPM Version] (https://img.shields.io/npm/v/code-push-server.svg)] (https://npmjs.org/package/code-push-server)
+[! [Node.js Version] (https://img.shields.io/node/v/code-push-server.svg)] (https://nodejs.org/en/download/)
+[! [Linux Status] (https://img.shields.io/travis/lisong/code-push-server/master.svg?label=linux)] (https://travis-ci.org/lisong/code -push-server)
+[! [Windows Status] (https://img.shields.io/appveyor/ci/lisong/code-push-server/master.svg?label=windows)] (https://ci.appveyor.com/project / Lisong / code-push-server)
+[! [Coverage Status] (https://img.shields.io/coveralls/lisong/code-push-server/master.svg)] (https://coveralls.io/github/lisong/code-push-server )
+[! [Dependency Status] (https://img.shields.io/david/lisong/code-push-server.svg)] (https://david-dm.org/lisong/code-push-server)
+[! [Known Vulnerabilities] (https://snyk.io/test/npm/code-push-server/badge.svg)] (https://snyk.io/test/npm/code-push-server)
+[! [Licenses] (https://img.shields.io/npm/l/code-push-server.svg)] (https://spdx.org/licenses/MIT)
 
-CodePush Server is a CodePush progam server! microsoft CodePush cloud is slow in China, we can use this to build our's. I use [qiniu](http://www.qiniu.com/) to store the files, because it's simple and quick!  Or you can use local storage, just modify config.js file, it's simple configure.
+CodePush Server is a CodePush progam server! Microsoft CodePush cloud is slow, we can use this to build our's. You can use local storage, just modify config.js file, it's simple configure.
 
-## 正确使用code-push热更新
+## Use code-push hot update correctly
 
-- 苹果允许使用热更新[Apple's developer agreement](https://developer.apple.com/programs/ios/information/iOS_Program_Information_4_3_15.pdf), 但是规定不能弹框提示用户更新，影响用户体验。 而Google Play恰好相反，必须弹框告知用户更新。然而中国的android市场都必须关闭更新弹框，否则会在审核应用时以“请上传最新版本的二进制应用包”驳回应用。
-- react-native 不同平台bundle包不一样，在使用code-push-server的时候必须创建不同的应用来区分(eg. CodePushDemo-ios 和 CodePushDemo-android)
-- react-native-code-push只更新资源文件,不会更新java和Objective C，所以npm升级依赖包版本的时候，如果依赖包使用的本地化实现, 这时候必须更改应用版本号(ios修改Info.plist中的CFBundleShortVersionString, android修改build.gradle中的versionName), 然后重新编译app发布到应用商店。
-- 推荐使用code-push release-react 命令发布应用，该命令合并了打包和发布命令(eg. code-push release-react CodePushDemo-ios ios -d Production)
+- Apple allows the use of hot update [Apple's developer agreement] (https://developer.apple.com/programs/ios/information/iOS_Program_Information_4_3_15.pdf), but the provisions can not be prompted to update the user, affecting the user experience. And Google Play happens to be the opposite, you must inform the user to update.
+- react-native different platform bundles are not the same, in the use of code-push-server must be created when the different applications to distinguish (eg. CodePushDemo-ios and CodePushDemo-android)
+- react-native-code-push only update the resource file, will not update java and Objective C, so npm upgrade depends on the package version, if dependent on the use of localized package, this time must change the application version number (ios modify Info . CFBundleShortVersionString in .plist, android modifies versionName in build.gradle) and then recompiles the app to the app store.
+- recommend the use of the code-push release-react command to publish the application, which combines the package and release commands (eg. Code-push release-react CodePushDemo-ios ios -d Production)
 
 ## EXAMPLE
 
-### shell命令行端
+### shell command line
 
-```shell
-$ code-push login http://codepush.19910225.com:8080 #登录
+```sShell
+$ Code-push login http://codepush.19910225.com:8080 # Login
 ```
 
-### [web](http://codepush-managerment.19910225.com:8080) 
+### [web] (http://codepush-managerment.19910225.com:8080)
 
-访问：http://codepush-managerment.19910225.com:8080
+Visit: http://codepush-managerment.19910225.com: 8080
 
-### 客户端eg.
+### client eg.
 
-[ReactNative CodePushDemo](https://github.com/lisong/code-push-demo-app)
+[ReactNative CodePushDemo] (https://github.com/lisong/code-push-demo-app)
 
-[Cordova CodePushDemo](https://github.com/lisong/code-push-cordova-demo-app)
+[Cordova CodePushDemo] (https://github.com/lisong/code-push-cordova-demo-app)
 
 ## INSTALL FROM NPM PACKAGE
 
 ```shell
-$ npm install code-push-server -g
-$ code-push-server-db init --dbhost localhost --dbuser root --dbpassword #初始化mysql数据库
-$ code-push-server #启动服务 浏览器中打开 http://127.0.0.1:3000
+$ Npm install code-push-server -g
+$ Code-push-server-db init --dbhost localhost --dbuser root --dbpassword # initialize the mysql database
+$ Code-push-server # Start the service browser to open http://127.0.0.1:3000
 ```
 
 ## INSTALL FROM SOURCE CODE
 
 ```shell
-$ git clone https://github.com/lisong/code-push-server.git
-$ cd code-push-server
-$ npm install
-$ ./bin/db init --dbhost localhost --dbuser root --dbpassword #初始化mysql数据库
-$ ./bin/www #启动服务 浏览器中打开 http://127.0.0.1:3000
+$ Git clone https://github.com/lisong/code-push-server.git
+$ Cd code-push-server
+$ Npm install
+$ ./bin/db init --dbhost localhost --dbuser root --dbpassword # Initialize the mysql database
+$ ./bin/www # Start the service in the browser to open http://127.0.0.1:3000
 ```
 
 ## CONFIG
 ```shell
-$ vim config/config.js
+$ Vim config / config.js
 ```
-请检查如下配置是否和你的环境一致,尤其是downloadUrl参数
+Please check if the following configuration is consistent with your environment, especially the downloadUrl parameter
 
 ```
-  db: {
-    username: "root",
-    password: null,
-    database: "codepush",
-    host: "127.0.0.1",
-    dialect: "mysql"
-  },
-  //七牛云存储配置 当storageType为qiniu时需要配置
-  qiniu: {
-    accessKey: "",
-    secretKey: "",
-    bucketName: "",
-    downloadUrl: "" //文件下载域名地址
-  },
-  //文件存储在本地配置 当storageType为local时需要配置
-  local: {
-    storageDir: "/Users/tablee/workspaces/storage",
-    //文件下载地址 CodePush Server 地址 + '/download' download对应app.js里面的地址
-    downloadUrl: "http://localhost:3000/download"
-  },
-  common: {
-    //登录jwt签名密钥，必须更改，否则有安全隐患，可以使用随机生成的字符串
-    loginSecret: "CodePushServer",
-    dataDir: "/Users/tablee/workspaces/data",
-    //选择存储类型，目前支持local和qiniu配置
-    storageType: "local"
-  },
+  Db: {
+    Username: "root",
+    Password: null,
+    Database: "codepush",
+    Host: "127.0.0.1",
+    Dialect: "mysql"
+  },
+  The configuration is required when storageType is qiniu
+  Qiniu: {
+    AccessKey: "",
+    SecretKey: "",
+    BucketName: "",
+    DownloadUrl: "" / / file download domain name address
+  },
+  // The file is stored locally and needs to be configured when storageType is local
+  Local: {
+    StorageDir: "/ Users / tablee / workspaces / storage",
+    // file download address CodePush Server address + '/ download' download corresponding app.js inside the address
+    DownloadUrl: "http: // localhost: 3000 / download"
+  },
+  Common: {
+    // login jwt signature key, must be changed, otherwise there are security risks, you can use the randomly generated string
+    LoginSecret: "CodePushServer",
+    DataDir: "/ Users / tablee / workspaces / data",
+    // select the storage type, currently supports local and qiniu configuration
+    StorageType: "local"
+  },
 ```
-read [config.js](https://github.com/lisong/code-push-server/blob/master/config/config.js)
+Read [config.js] (https://github.com/lisong/code-push-server/blob/master/config/config.js)
 
 
-## Storage mode [local/qiniu]
+## Storage mode [local / qiniu]
 
-- 配置local存储,修改config/config.js中storageType值为local,配置中local下面storageDir和downloadUrl，如果不在同一台机器上，downloadUrl请指定域名或者ip地址
+- configure local storage, modify config / config.js storageType value for the local, configuration in the following storageDir and downloadUrl local, if not on the same machine, downloadUrl Please specify the domain name or ip address
 
 
 ## RUN
 
 ```shell
-$ node ./bin/www # or code-push-server
+$ Node ./bin/www # or code-push-server
 ```
 
-or point config file and ENV
+Or point config file and ENV
 
 ```shell
-$ CONFIG_FILE=/path/to/config.js NODE_ENV=production node ./bin/www # or CONFIG_FILE=/path/to/config.js NODE_ENV=production code-push-server
+$ CONFIG_FILE = / path / to / config.js NODE_ENV = production node ./bin/www # or CONFIG_FILE = / path / to / config.js NODE_ENV = production code-push-server
 ```
 
-notice. you have to change `loginSecret` in config.js for security.
+You have to change `loginSecret` in config.js for security.
 
-## Default listen Host/Port  0.0.0.0/3000 
-you can change like this.
+## Default listen Host / Port 0.0.0.0/3000
+You can change like this
 
 ```shell
-$ PORT=3000 HOST=127.0.0.1 NODE_ENV=production node ./bin/www # or PORT=3000 HOST=127.0.0.1 NODE_ENV=production code-push-server
+$ PORT = 3000 HOST = 127.0.0.1 NODE_ENV = production node ./bin/www # or PORT = 3000 HOST = 127.0.0.1 NODE_ENV = production code-push-server
 ```
 
-## [code-push-cli](https://github.com/Microsoft/code-push)
+## [code-push-cli] (https://github.com/Microsoft/code-push)
 Use code-push-cli manager CodePushServer
 
 ```shell
-$ npm install code-push-cli@latest -g
-$ code-push login http://127.0.0.1:3000 #login in browser account:admin password:123456
+$ npm install code-push-cli @ latest -g
+$ Code-push login http://127.0.0.1:3000 #login in browser account: admin password: 123456
 ```
 
-## [react-native-code-push](https://github.com/Microsoft/react-native-code-push) for react-native
+## [react-native-code-push] (https://github.com/Microsoft/react-native-code-push) for react-native
 
 ```shell
-$ cd /path/to/project
-$ npm install react-native-code-push@latest
+$ Cd / path / to / project
+$ Npm install react-native-code-push @ latest
 ```
 
 ## config react-native project
 Follow the react-native-code-push docs, addition iOS add a new entry named CodePushServerURL, whose value is the key of ourself CodePushServer URL. Andriod use the new CodePush constructor in MainApplication point CodePushServerUrl
 
-iOS eg. in file Info.plist
+IOS eg. In file Info.plist
 
 ```xml
 ...
-<key>CodePushDeploymentKey</key>
-<string>YourCodePushKey</string>
-<key>CodePushServerURL</key>
-<string>YourCodePushServerUrl</string>
+<Key> CodePushDeploymentKey </ key>
+<String> YourCodePushKey </ string>
+<Key> CodePushServerURL </ key>
+<String> YourCodePushServerUrl </ string>
 ...
 ```
 
-Android eg. in file MainApplication.java
+Android eg. In file MainApplication.java
 
 ```java
 @Override
-protected List<ReactPackage> getPackages() {
-  return Arrays.<ReactPackage>asList(
-      new MainReactPackage(),
-      new CodePush(
-         "YourKey",
-         MainApplication.this,
-         BuildConfig.DEBUG,
-         "YourCodePushServerUrl" 
-      )
-  );
+Protected List <ReactPackage> getPackages () {
+  Return Arrays. <ReactPackage> asList (
+      New MainReactPackage (),
+      New CodePush (
+         "YourKey",
+         MainApplication.this,
+         BuildConfig.DEBUG,
+         "YourCodePushServerUrl"
+      )
+  );
 }
 ```
 
 
-## [cordova-plugin-code-push](https://github.com/Microsoft/cordova-plugin-code-push) for cordova
+## [cordova-plugin-code-push] (https://github.com/Microsoft/cordova-plugin-code-push) for cordova
 
 ```shell
-$ cd /path/to/project
-$ cordova plugin add cordova-plugin-code-push@latest --save
-```
+$ Cd / path / to / project
+$ Cordova plugin add cordova-plugin-code-push @ latest --save
+`` ``
 
 ## config cordova project
 
-edit config.xml. add code below.
+Edit config.xml. Add code below
 
 ```xml
-<platform name="android">
-    <preference name="CodePushDeploymentKey" value="nVHPr6asLSusnWoLBNCSktk9FWbiqLF160UDg" />
-    <preference name="CodePushServerUrl" value="http://codepush.19910225.com:8080/" />
-</platform>
-<platform name="ios">
-    <preference name="CodePushDeploymentKey" value="Iw5DMZSIrCOS7hbLsY5tHAHNITFQqLF160UDg" />
-    <preference name="CodePushServerUrl" value="http://codepush.19910225.com:8080/" />
-</platform>
-```
+<Platform name = "android">
+    <Preference name = "CodePushDeploymentKey" value = "nVHPr6asLSusnWoLBNCSktk9FWbiqLF160UDg" />
+    <Preference name = "CodePushServerUrl" value = "http://codepush.19910225.com:8080/" />
+</ Platform>
+<Platform name = "ios">
+    <Preference name = "CodePushDeploymentKey" value = "Iw5DMZSIrCOS7hbLsY5tHAHNITFQqLF160UDg" />
+    <Preference name = "CodePushServerUrl" value = "http://codepush.19910225.com:8080/" />
+</ Platform>
+`` ``
 
 ## Production Manage
-use [pm2](http://pm2.keymetrics.io/) to manage process.
+Use [pm2] (http://pm2.keymetrics.io/) to manage process.
 
 ```shell
 $ npm install pm2 -g
-$ cp config/config.js /path/to/production/config.js
+$ p config / config.js /path/to/production/config.js
 $ vim /path/to/production/config.js #configure your env.
-$ cp docs/process.yml /path/to/production/process.yml
+$ cp docs / process.yml /path/to/production/process.yml
 $ vim /path/to/production/process.yml #configure your env.
 $ pm2 start /path/to/production/process.yml
 ```
 
-## Use [CodePush Web](https://github.com/lisong/code-push-web) manage apps
+## Use [CodePush Web] (https://github.com/lisong/code-push-web) manage apps
 
-add codePushWebUrl config in ./config/config.js
+Add codePushWebUrl config in ./config/config.js
 
-eg.
+Eg.
 
 ```json
 ...
-"common": {
-  "loginSecret": "CodePushServer",
-  "codePushWebUrl": "Your CodePush Web address",
+"Common": {
+  "LoginSecret": "CodePushServer",
+  "CodePushWebUrl": "Your CodePush Web address",
 }
 ...
 ```
 
 ## License
-MIT License [read](https://github.com/lisong/code-push-server/blob/master/LICENSE)
-
-
+MIT License [read] (https://github.com/lisong/code-push-server/blob/master/LICENSE)
+This is a clone of [lisong code push repo] (https://github.com/lisong/code-push-server)
